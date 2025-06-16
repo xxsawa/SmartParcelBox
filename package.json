@@ -1,0 +1,29 @@
+{
+  "name": "sluzba-pro-dorucovani-do-boxu",
+  "version": "1.0.0",
+  "description": "Express js and typescript application",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "build": "tsc --outDir ./dist",
+    "start": "node dist/app.js",
+    "dev": "ts-node-dev --respawn --env-file=.env --transpile-only src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "sluzba-pro-dorucovani-do-boxu"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.1",
+    "@types/pg": "^8.15.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
