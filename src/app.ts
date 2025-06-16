@@ -1,17 +1,29 @@
 import express from "express";
 import requestLogging from "./middleware/request-logging";
-import authentication from "./middleware/authentication";
-import pool from "./db";
+import AppDataSource from "./db/database";
+import router from "./routes/mainRouter.ts";
+import verifyToken from "./middleware/authentication/index.ts";
 
 const app = express();
 const port = 3000;
+
+// DB
+AppDataSource.initialize()
+  .then(() => {
+    console.log("DB connection succesfull!");
+  })
+  .catch((err) => console.error(err));
 
 // Middleware
 if (process.env.REQUEST_LOGGING) {
   app.use(requestLogging);
 }
+app.use(express.json());
 
-app.get("/", (req: any, res: any) => {
+// Routers
+app.use("/api", router);
+
+app.get("/", verifyToken, (req: any, res: any) => {
   res.send("Hello World!");
 });
 

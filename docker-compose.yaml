@@ -5,7 +5,7 @@ services:
     ports:
       - 3000:3000
   database:
-    image: postgres
+    image: postgis/postgis
     restart: always
     environment:
       POSTGRES_PASSWORD: password
