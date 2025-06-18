@@ -1,8 +1,8 @@
 import express from "express";
-import requestLogging from "./middleware/request-logging";
+import requestLogging from "./middleware/requestLogging.ts";
 import AppDataSource from "./db/database";
 import router from "./routes/mainRouter.ts";
-import verifyToken from "./middleware/authentication/index.ts";
+import verifyToken from "./middleware/authentication.ts";
 
 const app = express();
 const port = 3000;
@@ -15,10 +15,11 @@ AppDataSource.initialize()
   .catch((err) => console.error(err));
 
 // Middleware
+app.use(express.json());
+
 if (process.env.REQUEST_LOGGING) {
   app.use(requestLogging);
 }
-app.use(express.json());
 
 // Routers
 app.use("/api", router);

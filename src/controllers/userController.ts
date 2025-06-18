@@ -6,6 +6,6 @@ export const getUser = async (req: Request, res: Response) => {
   res.json({ user: user });
 };
 
-export const saveUser = async (req: Request, res: Response) => {
+export const postUser = async (req: Request, res: Response) => {
   res.json({ user: "user" });
 };
